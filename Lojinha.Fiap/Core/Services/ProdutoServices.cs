@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lojinha.Fiap.Core.Services
 {
-    public class ProdutoServices
+    public class ProdutoServices : IProdutoServices
     {
         private readonly IRedisCache _redisCache;
         private readonly IAzureStorage _azureStorage;

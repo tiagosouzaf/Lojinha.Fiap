@@ -1,4 +1,5 @@
 ﻿using Lojinha.Fiap.Core.Models;
+using Lojinha.Fiap.Core.Services;
 using Lojinha.Fiap.InfraStructre.Storage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,10 @@ namespace Lojinha.Fiap.Controllers
     [Authorize]
     public class ProdutosController : Controller
     {
-        private readonly IAzureStorage _azureStorage;
-        public ProdutosController(IAzureStorage azureStorage)
+        private readonly IProdutoServices _produtoServices;
+        public ProdutosController(IProdutoServices produtoServices)
         {
-            _azureStorage = azureStorage;
+            _produtoServices = produtoServices;
         }
         public IActionResult Create()
         {
@@ -34,7 +35,7 @@ namespace Lojinha.Fiap.Controllers
                 Tags = new[] { "Motorola", "Celular", "SmartPhone" },
                 ImagemPrincipalUrl = "https://www.proteste.org.br/eletronicos/celular/teste/comparacao-de-celulares/motorola-moto-z2-play/31791_45629"
             };
-            _azureStorage.AddProduto(produto);
+           // _azureStorage.AddProduto(produto);
 
 
             return Content("Ok");
@@ -42,7 +43,7 @@ namespace Lojinha.Fiap.Controllers
 
         public async Task<IActionResult> Lista()
         {
-            return Json(await _azureStorage.ObterProdutos());
+            return Json(await _produtoServices.ObterProdutos());
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Lojinha.Fiap.InfraStructre.Redis
         private readonly IDatabase _db;
         public RedisCache(IConfiguration config)
         {
-            _redis = ConnectionMultiplexer.Connect(config.GetSection("Azure=Redis").Value);
+            _redis = ConnectionMultiplexer.Connect(config.GetSection("Azure:Redis").Value);
 
             _db = _redis.GetDatabase();
         }

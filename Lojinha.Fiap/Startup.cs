@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.AzureAD.UI;
 using Microsoft.AspNetCore.Authentication;
 using Lojinha.Fiap.InfraStructre.Storage;
 using Lojinha.Fiap.InfraStructre.Redis;
+using Lojinha.Fiap.Core.Services;
 
 namespace Lojinha.Fiap
 {
@@ -36,6 +37,7 @@ namespace Lojinha.Fiap
 
             services.AddScoped<IAzureStorage, AzureStorage>();
             services.AddSingleton<IRedisCache, RedisCache>();
+            services.AddScoped<IProdutoServices, ProdutoServices>();
 
             services.AddMvc();
         }
