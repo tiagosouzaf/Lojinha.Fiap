@@ -37,20 +37,22 @@
 
 @section Scripts
     {
-    <script>
-        $(function(){
 
-            $(".btn-sucess").each(function () {
+    <script>
+        $(function () {
+
+            $(".btn-success").each(function () {
 
                 var btn = $(this);
 
                 btn.click(function () {
                     var id = btn.data("id");
+
                     $.post("/Carrinho/Add", { id: id }, function (data) {
                         $(".carrinho-placeholder").html(data);
                     });
                 });
             });
-        }
+        });
     </script>
 }

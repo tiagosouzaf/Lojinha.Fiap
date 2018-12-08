@@ -29,7 +29,7 @@ namespace Lojinha.Fiap.Core.Services
         public Carrinho Obter(string usuario)
         {
             var value = _redis.Get($"{_key}:carrinho:{usuario}");
-            if (!string.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 var carrinho = new Carrinho();
                 Salvar(usuario, carrinho);
