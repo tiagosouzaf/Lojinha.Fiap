@@ -20,9 +20,8 @@
 
   <ItemGroup>
     <Folder Include="Core\Interface\" />
-    <Folder Include="InfraStructre\Mappings\" />
-    <Folder Include="Core\ViewModels\" />
     <Folder Include="InfraStructre\Repository\" />
+    <Folder Include="Views\Carrinho\" />
   </ItemGroup>
 
 </Project>

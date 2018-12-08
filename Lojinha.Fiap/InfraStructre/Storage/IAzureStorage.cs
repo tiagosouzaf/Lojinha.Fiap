@@ -8,5 +8,6 @@ namespace Lojinha.Fiap.InfraStructre.Storage
     {
         void AddProduto(Produto produto);
         Task<List<Produto>> ObterProdutos();
+        Task<Produto> ObterProduto(int id);
     }
 }

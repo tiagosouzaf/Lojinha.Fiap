@@ -18,6 +18,11 @@ namespace Lojinha.Fiap.Core.Services
             _redisCache = redisCache;
             _azureStorage = azureStorage;
         }
+
+        public async Task<Produto> ObterProduto(int id)
+        {
+            return await _azureStorage.ObterProduto(id);
+        }
         public async Task<List<Produto>> ObterProdutos()
         {
             var key = "produtos";

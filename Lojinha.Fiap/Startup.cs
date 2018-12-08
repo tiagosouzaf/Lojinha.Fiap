@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Authentication;
 using Lojinha.Fiap.InfraStructre.Storage;
 using Lojinha.Fiap.InfraStructre.Redis;
 using Lojinha.Fiap.Core.Services;
+using AutoMapper;
+using Lojinha.Fiap.InfraStructre.Mappings;
 
 namespace Lojinha.Fiap
 {
@@ -38,7 +40,11 @@ namespace Lojinha.Fiap
             services.AddScoped<IAzureStorage, AzureStorage>();
             services.AddSingleton<IRedisCache, RedisCache>();
             services.AddScoped<IProdutoServices, ProdutoServices>();
+            services.AddScoped<ICarrinhoServices, CarrinhoServices>();
 
+            Mapper.Initialize(options => options.AddProfile<ProdutoProfile>());
+
+            services.AddAutoMapper();
             services.AddMvc();
         }
 
@@ -63,7 +69,7 @@ namespace Lojinha.Fiap
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Produtos}/{action=Lista}/{id?}");
             });
         }
     }

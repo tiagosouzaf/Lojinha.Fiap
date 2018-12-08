@@ -56,5 +56,28 @@ namespace Lojinha.Fiap.InfraStructre.Storage
             JsonConvert.DeserializeObject<Produto>(p.Produto)
             ).ToList();
         }
+
+        public async Task<Produto> ObterProduto(int id)
+        {
+            var table = _tableClient.GetTableReference("produtos");
+            table.CreateIfNotExistsAsync().Wait();
+
+            TableQuery<ProdutoEntity> query = new TableQuery<ProdutoEntity>()
+                .Where(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "13net")
+                )
+                .Where
+                (
+                TableQuery.GenerateFilterCondition
+                ("RowKey", QueryComparisons.Equal, id.ToString())
+                );
+
+            TableContinuationToken token = null;
+
+            var segment = await table.ExecuteQuerySegmentedAsync(query, token);
+            var produtosEntity = segment.FirstOrDefault();
+
+            return JsonConvert.DeserializeObject<Produto>(produtosEntity.Produto);
+        }
     }
 }
