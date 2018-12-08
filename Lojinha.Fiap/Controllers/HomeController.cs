@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Lojinha.Fiap.Models;
+using Lojinha.Fiap.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Lojinha.Fiap.Controllers

@@ -1,6 +1,6 @@
 using System;
 
-namespace Lojinha.Fiap.Models
+namespace Lojinha.Fiap.Core.Models
 {
     public class ErrorViewModel
     {
